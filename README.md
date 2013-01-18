@@ -1,4 +1,4 @@
-cohen
-=====
+EffectSize
+==========
 
-Calculadora masiva de d de Cohen
+Calculadora de Tamaño del Efecto
