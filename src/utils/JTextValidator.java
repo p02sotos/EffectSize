@@ -71,7 +71,7 @@ public class JTextValidator extends JTextField {
             public void keyPressed(KeyEvent e) {
             }
         });
-        
+        /**/
     }
     private void validateText() {
         Matcher matcher = pattern.matcher(this.getText());

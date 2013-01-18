@@ -48,7 +48,7 @@ public class Muestras extends JPanel {
         add(new JLabel(" Tamaño Muestral"));
         add(muestraN);
         setBorder(BorderFactory.createCompoundBorder(Borderspam,border));
-        
+        /**/
                 
         
     }

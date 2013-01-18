@@ -20,7 +20,7 @@ import calculadoraGUI.GUI;
  * 
  */
 public class CalculadoraSimpleCohen {
-
+/**/
     /**
      * @param args the command line arguments
      */

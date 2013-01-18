@@ -58,7 +58,7 @@ public class GUI extends JFrame implements ActionListener {
         panelResultados.add(mensaje);
         tabPanel.addTab("Cálculo Simple", panelSimple);
         add(tabPanel);
-        
+        /**/
         
         /****************************
          * Fin de la primera pestaña

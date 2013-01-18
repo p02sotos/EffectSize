@@ -26,7 +26,7 @@ public abstract class CalcularCohen {
         cohen = (a.getM() - b.getM())/s;
         
         return cohen;
-           
+      /**/    
     }
     public static String compruebaTamano (double cohen) {
         
