@@ -4,7 +4,7 @@
  */
 package calculadorasimplecohen;
 
-import calculadoraGUI.GUI;
+import calculadoraGUI.Escritorio;
 
 /**
  *
@@ -25,7 +25,7 @@ public class CalculadoraSimpleCohen {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GUI ventana = new GUI();
+        Escritorio ventana = new Escritorio();
         
         // TODO code application logic here
     }

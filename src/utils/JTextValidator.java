@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package utils;
-
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -14,8 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 /**
- *
+ ***************************
  * @author Sergio Soriano
+ ***************************
  */
 public class JTextValidator extends JTextField {
     private Pattern pattern;
