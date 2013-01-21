@@ -6,16 +6,16 @@ package calculadoraGUI;
 
 import java.awt.GridLayout;
 import javax.swing.JButton;
-
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import java.awt.event.*;
 import calculadorasimplecohen.*;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
@@ -28,7 +28,7 @@ import utils.ReadFileTXT;
  * Interfaz gráfica y gestor de eventos básico para introducir los datos
  * 
  */
-public class GUI extends JInternalFrame implements ActionListener {
+public class CohenGUI extends JInternalFrame implements ActionListener {
     private Muestras panelMuestra1;
     private Muestras panelMuestra2;
     private JButton botonResultado;
@@ -41,8 +41,8 @@ public class GUI extends JInternalFrame implements ActionListener {
     private JButton ficheroBoton;
     private JFileChooser seleccionarFichero;
     
-    public GUI(){
-        super("Calculadora de Cohen");
+    public CohenGUI(){
+        super("Calculadora de Cohen",false, true, false, true);
         panelMuestra1 = new Muestras(1);
         panelMuestra2 = new Muestras(2);
         botonResultado = new JButton("Calcular Cohen");
@@ -51,7 +51,8 @@ public class GUI extends JInternalFrame implements ActionListener {
         resultado = new JLabel();
         mensaje = new JLabel();
         setSize(300, 500);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setMaximumSize(new Dimension(600, 600));
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         //setResizable(false);
         //FlowLayout dis = new FlowLayout(FlowLayout.CENTER, 40, 40);
         
@@ -109,6 +110,86 @@ public class GUI extends JInternalFrame implements ActionListener {
             
     
     }
+
+    public Muestras getPanelMuestra1() {
+        return panelMuestra1;
+    }
+
+    public void setPanelMuestra1(Muestras panelMuestra1) {
+        this.panelMuestra1 = panelMuestra1;
+    }
+
+    public Muestras getPanelMuestra2() {
+        return panelMuestra2;
+    }
+
+    public void setPanelMuestra2(Muestras panelMuestra2) {
+        this.panelMuestra2 = panelMuestra2;
+    }
+
+    public JButton getBotonResultado() {
+        return botonResultado;
+    }
+
+    public void setBotonResultado(JButton botonResultado) {
+        this.botonResultado = botonResultado;
+    }
+
+    public JLabel getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(JLabel mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public JPanel getPanelResultados() {
+        return panelResultados;
+    }
+
+    public void setPanelResultados(JPanel panelResultados) {
+        this.panelResultados = panelResultados;
+    }
+
+    public JTabbedPane getTabPanel() {
+        return tabPanel;
+    }
+
+    public void setTabPanel(JTabbedPane tabPanel) {
+        this.tabPanel = tabPanel;
+    }
+
+    public JPanel getPanelSimple() {
+        return panelSimple;
+    }
+
+    public void setPanelSimple(JPanel panelSimple) {
+        this.panelSimple = panelSimple;
+    }
+
+    public JPanel getPanelFichero() {
+        return panelFichero;
+    }
+
+    public void setPanelFichero(JPanel panelFichero) {
+        this.panelFichero = panelFichero;
+    }
+
+    public JButton getFicheroBoton() {
+        return ficheroBoton;
+    }
+
+    public void setFicheroBoton(JButton ficheroBoton) {
+        this.ficheroBoton = ficheroBoton;
+    }
+
+    public JFileChooser getSeleccionarFichero() {
+        return seleccionarFichero;
+    }
+
+    public void setSeleccionarFichero(JFileChooser seleccionarFichero) {
+        this.seleccionarFichero = seleccionarFichero;
+    }
     @Override
      public void actionPerformed(ActionEvent e) {
          float resTeemporal;
@@ -126,7 +207,7 @@ public class GUI extends JInternalFrame implements ActionListener {
             }
             else if (e.getSource() == ficheroBoton) {
                 seleccionarFichero = new JFileChooser();
-                int fi = seleccionarFichero.showOpenDialog(GUI.this);
+                int fi = seleccionarFichero.showOpenDialog(CohenGUI.this);
                 File fichero = seleccionarFichero.getSelectedFile();
                 ArrayList lista;
                 ReadFileTXT lectura = new ReadFileTXT(fichero, " ");
