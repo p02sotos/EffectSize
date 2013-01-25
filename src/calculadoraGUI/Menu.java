@@ -4,53 +4,44 @@
  */
 package calculadoraGUI;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
 /**
  *
  * @author biblioteca
  */
-public class Menu extends JMenuBar  {
+public class Menu extends JMenuBar {
+
     private JMenu menuHerramientas;
     private JMenu menuArchivo;
     private JMenu menuAyuda;
     private JMenuItem cohenItemMenu;
     private JMenuItem archivoItemSalir;
     private JMenuItem aboutItemMenu;
-    
 
     public Menu() {
         super();
-        
-        
-        /*************
-         * Menu
-         *************/
+/***********
+ * Fin Menu 
+ ***********/
         //Menus
         menuHerramientas = new JMenu("Herramientas");
         menuArchivo = new JMenu("Archivo");
         menuAyuda = new JMenu("Ayuda");
-        
-        
-        
         //Items
         cohenItemMenu = new JMenuItem("d de Cohen");
         archivoItemSalir = new JMenuItem("Salir");
         aboutItemMenu = new JMenuItem("About");
-        
         menuHerramientas.add(cohenItemMenu);
         menuArchivo.add(archivoItemSalir);
+        menuAyuda.add(aboutItemMenu);
         add(menuArchivo);
         add(menuHerramientas);
-        
-        
-        /************
-         * Fin Menu
-         ************/
+        add(menuAyuda);
+/***********
+ * Fin Menu 
+ ***********/
     }
 
     public JMenu getMenuHerramientas() {
@@ -84,7 +75,7 @@ public class Menu extends JMenuBar  {
     public void setAboutItemMenu(JMenuItem aboutItemMenu) {
         this.aboutItemMenu = aboutItemMenu;
     }
-   
+
     public JMenuItem getCohenItemMenu() {
         return cohenItemMenu;
     }
@@ -100,7 +91,4 @@ public class Menu extends JMenuBar  {
     public void setArchivoItemSalir(JMenuItem archivoItemSalir) {
         this.archivoItemSalir = archivoItemSalir;
     }
-
-   
-    
 }

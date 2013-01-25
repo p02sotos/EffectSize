@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package calculadoraGUI;
+package modelo;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -24,16 +24,18 @@ public class Muestras extends JPanel {
     private JTextValidator muestraMedia;
     private JTextValidator muestraDesviacion;
     private JTextValidator muestraN;
+    static int contadorMuestras = 0;
     
     /*Contructor*/
-    public Muestras(int n){
+    public Muestras(){
         super();
         /*Creamos las cajas de texto validadas*/
         muestraMedia = new JTextValidator("[[0-9]|.]*");
         muestraDesviacion = new JTextValidator("[[0-9]|.]*");
         muestraN = new JTextValidator("[[0-9]|.]*");
+        contarMuestras();
         Border BorderBlack = BorderFactory.createLineBorder(Color.black);
-        Border border = BorderFactory.createTitledBorder(BorderBlack, "Muestra " + n);
+        Border border = BorderFactory.createTitledBorder(BorderBlack, "Muestra " + contadorMuestras);
         Border Borderspam = BorderFactory.createEmptyBorder(4, 2, 4, 3);
         GridLayout dis = new GridLayout(3, 1,1,1);
         muestraMedia.setText("0");
@@ -124,6 +126,9 @@ public class Muestras extends JPanel {
          muestraDesviacion.setText(valD);
          muestraN.setText(valN);
         
+    }
+    public static void contarMuestras() {
+        contadorMuestras++;
     }
     
     

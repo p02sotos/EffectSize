@@ -4,6 +4,8 @@
  */
 package calculadoraGUI;
 
+import controller.CalcularCohen;
+import modelo.Muestras;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -20,7 +22,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.Border;
-import utils.ReadFileTXT;
+import controller.ReadFileTXT;
 
 /**
  *
@@ -43,8 +45,8 @@ public class CohenGUI extends JInternalFrame implements ActionListener {
     
     public CohenGUI(){
         super("Calculadora de Cohen",false, true, false, true);
-        panelMuestra1 = new Muestras(1);
-        panelMuestra2 = new Muestras(2);
+        panelMuestra1 = new Muestras();
+        panelMuestra2 = new Muestras();
         botonResultado = new JButton("Calcular Cohen");
         ficheroBoton = new JButton("Cargar datos"); //Boton para cargar archivo de texyto
         tabPanel = new JTabbedPane();
@@ -212,9 +214,7 @@ public class CohenGUI extends JInternalFrame implements ActionListener {
                 ArrayList lista;
                 ReadFileTXT lectura = new ReadFileTXT(fichero, " ");
                 lista = lectura.readFromFile();
-                
-                
-                
+     
             };
             
             

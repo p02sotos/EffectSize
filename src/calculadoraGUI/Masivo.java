@@ -4,6 +4,9 @@
  */
 package calculadoraGUI;
 
+import modelo.EditorTabla;
+import modelo.Muestras;
+import modelo.ModeloTabla;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -22,68 +25,54 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.Border;
-import utils.ReadFileTXT;
+import javax.swing.table.DefaultTableModel;
+import controller.ReadFileTXT;
 
 /**
  *
  * @author p02sotos
  */
-public class Masivo extends JPanel implements ActionListener, MouseListener, WindowListener {
+public class Masivo extends JPanel implements ActionListener {
 
     private File fichero;
     private JFileChooser seleccionarFichero;
     private JTable tabla;
     private JButton btnCargar = new JButton("Cargar");
+    private JButton btnAdd = new JButton("Añadir");
+    private JButton btnRemove = new JButton("Eliminar");
     private JScrollPane scroll;
     private ArrayList listaCargada;
+    private ModeloTabla modeloTabla;
+    private EditorTabla editor;
+    
+    
 
     public Masivo() {
-        String[] columnNames = {
-            "Media",
-            "Desviación",
-            "Tamaño Muestral"};
-        Object[][] datosIniciales = {
-            {"1", "2", "3"},
-            {"1", "2", "3"},
-            {"1", "2", "3"},
-            {"1", "2", "3"},
-            {"1", "2", "3"},
-            {"1", "2", "3"},
-            {"1", "2", "3"},
-            {"1", "2", "3"},
-            {"1", "2", "3"},
-            {"1", "2", "3"}
-        };
-
+        
+        
         Border bordeNormalNegro = BorderFactory.createLineBorder(Color.black);
-        Border bordeTituloNegro = BorderFactory.createTitledBorder("Título");
+        Border bordeTituloNegro = BorderFactory.createTitledBorder("Muestras");
         setBorder(bordeTituloNegro);
-        tabla = new JTable(datosIniciales, columnNames);
+        modeloTabla = new ModeloTabla();
+        tabla = new JTable(modeloTabla);
+        editor = new EditorTabla();
+        tabla.setDefaultEditor(Object.class, editor);
         scroll = new JScrollPane(tabla);
         scroll.setPreferredSize(new Dimension(270, 185));
         tabla.setFillsViewportHeight(true);
         add(scroll);
-
+        add(btnRemove);
         add(btnCargar); //Boton al panel de la segunda pestaña
+        add(btnAdd);
+        btnRemove.addActionListener(this);
         btnCargar.addActionListener(this);  //Evento del botón
+        btnAdd.addActionListener(this);
 
         JLabel et1 = new JLabel("Etiqueta 1", JLabel.CENTER);
         JLabel et2 = new JLabel("Etiqueta 2", JLabel.CENTER);
         JLabel et3 = new JLabel("Etiqueta 3", JLabel.CENTER);
         JLabel et4 = new JLabel("Etiqueta 4", JLabel.CENTER);
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -99,68 +88,19 @@ public class Masivo extends JPanel implements ActionListener, MouseListener, Win
             listaCargada = lectura.readFromFile();
             System.out.print("hola");
 
-        };
+        }
+        else if (e.getSource() == btnAdd) {
+           modeloTabla.addFila(new Muestras());
+            
+        }
+        else if (e.getSource() == btnRemove) {
+           modeloTabla.removeFila();
+            
+        }
+        
 
 
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void windowClosing(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void windowClosed(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
+
+  
