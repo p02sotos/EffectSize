@@ -52,7 +52,7 @@ public class CohenGUI extends JInternalFrame implements ActionListener {
         tabPanel = new JTabbedPane();
         resultado = new JLabel();
         mensaje = new JLabel();
-        setSize(300, 500);
+        setSize(400, 800);
         setMaximumSize(new Dimension(600, 600));
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         //setResizable(false);
@@ -71,8 +71,7 @@ public class CohenGUI extends JInternalFrame implements ActionListener {
         Border padding = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         Border bordeNegro = BorderFactory.createLineBorder(Color.black);
         Border bordeCompuesto = BorderFactory.createCompoundBorder(padding, bordeNegro) ;
-        panelSimple = new JPanel(dis1);
-              
+        panelSimple = new JPanel(dis1);              
         panelResultados = new JPanel(dis2);
         //Iniciamos el Layout del Frame
         panelSimple.add(panelMuestra1);
@@ -88,110 +87,97 @@ public class CohenGUI extends JInternalFrame implements ActionListener {
         /****************************
         * Fin de la primera pestaña
         ****************************/        
-        //Iniciamos el JPanel de los botones e iniciamos el panel
-         
-        
-    
+       
         /****************************************************************
          * Iniciamos la segunda pestaña y añadimos los componentes a ella
          * Esta será más completa.
          ****************************************************************/
         Masivo panelPestana2 = new Masivo();
-       // panelFichero.add(ficheroBoton); //Boton al panel de la segunda pestaña
-       // ficheroBoton.addActionListener(this);  //Evento del botón
-        tabPanel.addTab("Masivo", panelPestana2); // Segunda Pestaña
-      
+        tabPanel.addTab("Masivo", panelPestana2);
+        add(tabPanel); 
+        
         /****************************
         * Fin de la segunda pestaña
-        ****************************/     
+        ****************************/    
+        /****************************************************************
+         * Iniciamos la tercera pestaña y añadimos los componentes a ella
+         * ***************************************************************/
+        UtilsEffectSize utilEffect = new UtilsEffectSize();
+        tabPanel.addTab("Utilidades Effect Size", utilEffect);
+        
+        
+        
+        
+        //Iniciamos el LookAndFeel llamando a su método
          
         
-        tabPanel.addTab("Probando", panelPestana2);
-        add(tabPanel);
-            
-            
-    
     }
-
     public Muestras getPanelMuestra1() {
         return panelMuestra1;
     }
-
     public void setPanelMuestra1(Muestras panelMuestra1) {
         this.panelMuestra1 = panelMuestra1;
     }
-
     public Muestras getPanelMuestra2() {
         return panelMuestra2;
     }
-
     public void setPanelMuestra2(Muestras panelMuestra2) {
         this.panelMuestra2 = panelMuestra2;
     }
-
     public JButton getBotonResultado() {
         return botonResultado;
     }
-
     public void setBotonResultado(JButton botonResultado) {
         this.botonResultado = botonResultado;
     }
-
     public JLabel getMensaje() {
         return mensaje;
     }
-
     public void setMensaje(JLabel mensaje) {
         this.mensaje = mensaje;
     }
-
     public JPanel getPanelResultados() {
         return panelResultados;
     }
-
     public void setPanelResultados(JPanel panelResultados) {
         this.panelResultados = panelResultados;
     }
-
     public JTabbedPane getTabPanel() {
         return tabPanel;
     }
-
     public void setTabPanel(JTabbedPane tabPanel) {
         this.tabPanel = tabPanel;
     }
-
     public JPanel getPanelSimple() {
         return panelSimple;
     }
-
     public void setPanelSimple(JPanel panelSimple) {
         this.panelSimple = panelSimple;
     }
-
     public JPanel getPanelFichero() {
         return panelFichero;
     }
-
     public void setPanelFichero(JPanel panelFichero) {
         this.panelFichero = panelFichero;
     }
-
     public JButton getFicheroBoton() {
         return ficheroBoton;
     }
-
     public void setFicheroBoton(JButton ficheroBoton) {
         this.ficheroBoton = ficheroBoton;
     }
-
     public JFileChooser getSeleccionarFichero() {
         return seleccionarFichero;
     }
-
     public void setSeleccionarFichero(JFileChooser seleccionarFichero) {
         this.seleccionarFichero = seleccionarFichero;
     }
+    public  void lookAndFeel (){
+     //Iniciamos el JPanel de los botones e iniciamos el panel
+        
+    }
+    
+    
     @Override
      public void actionPerformed(ActionEvent e) {
          float resTeemporal;
@@ -206,18 +192,6 @@ public class CohenGUI extends JInternalFrame implements ActionListener {
                        + "</p></html>"
                        );
                 mensaje.setText(CalcularCohen.compruebaTamano(resTeemporal));
-            }
-            else if (e.getSource() == ficheroBoton) {
-                seleccionarFichero = new JFileChooser();
-                int fi = seleccionarFichero.showOpenDialog(CohenGUI.this);
-                File fichero = seleccionarFichero.getSelectedFile();
-                ArrayList lista;
-                ReadFileTXT lectura = new ReadFileTXT(fichero, " ");
-                lista = lectura.readFromFile();
-     
-            };
-            
-            
-        }
-    
+            }   
+    }
 }

@@ -34,7 +34,7 @@ public class MenuPopUp extends JPopupMenu implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()== itemCohen) {
-            System.out.print("Hola");
+         
         }
     } 
     

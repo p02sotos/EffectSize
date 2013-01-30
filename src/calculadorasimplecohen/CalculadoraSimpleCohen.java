@@ -5,6 +5,7 @@
 package calculadorasimplecohen;
 
 import calculadoraGUI.Escritorio;
+import calculadoraGUI.LookAndFeel;
 
 /**
  *
@@ -25,6 +26,7 @@ public class CalculadoraSimpleCohen {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+         LookAndFeel.nimbus();
         Escritorio ventana = new Escritorio();
         
         // TODO code application logic here

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.awt.Color;
@@ -11,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import utils.JTextValidator;
-
 /**
  *
  * @author p02sotos
@@ -24,8 +19,7 @@ public class Muestras extends JPanel {
     private JTextValidator muestraMedia;
     private JTextValidator muestraDesviacion;
     private JTextValidator muestraN;
-    static int contadorMuestras = 0;
-    
+    static int contadorMuestras = 0;    
     /*Contructor*/
     public Muestras(){
         super();
@@ -41,7 +35,6 @@ public class Muestras extends JPanel {
         muestraMedia.setText("0");
         muestraDesviacion.setText("0");
         muestraN.setText("0");
-
         setLayout(dis);
         add(new JLabel(" Media"));
         add(muestraMedia);
@@ -50,11 +43,7 @@ public class Muestras extends JPanel {
         add(new JLabel(" Tamaño Muestral"));
         add(muestraN);
         setBorder(BorderFactory.createCompoundBorder(Borderspam,border));
-        /**/
-                
-        
-    }
-    
+    }    
     /** Getter and Setters*/
      /** Métodos getM() 
         * @return Devuelve un double con la media
@@ -64,10 +53,8 @@ public class Muestras extends JPanel {
     }
      /** Métodos getD() 
         * @return Devuelve un double con la desviación
-        */ 
-     
-    public double getD() {
-        
+        */      
+    public double getD() {        
         return Double.parseDouble(this.muestraDesviacion.getText());
     }
     /** Métodos getN() 
@@ -83,6 +70,7 @@ public class Muestras extends JPanel {
         */ 
     public void setM(String val) {
         muestraMedia.setText(val);
+       
     }
     /** Método setD(String val) Introduce la desviacion en la muestra
         * @params Un String  con la Desviación
@@ -91,16 +79,19 @@ public class Muestras extends JPanel {
         */ 
     public void setD(String val) {
         muestraDesviacion.setText(val);
+        
     }
-    /** Método setN(String val) Introduce el tamaño de la muestra
-        * @params Un String  con la tamaño de la muestra
-        * @return Sin valor de retorno 
-        * @exception exceptions Ningún error (Excepción) definida
-        */ 
+    /** 
+     * Método setN(String val) Introduce el tamaño de la muestra
+     * @params Un String  con la tamaño de la muestra
+     * @return Sin valor de retorno 
+     * @exception exceptions Ningún error (Excepción) definida
+     */ 
     public  void setN(String val) {
-        muestraN.setText(val);
+        muestraN.setText(val);       
     }
-    /** Métodos getMuestraCompleta()
+    /** 
+     * Métodos getMuestraCompleta()
         * @return Devuelve un Array de Doubles con la media, desviacion
         * y tamañno de la muestra
         */ 
@@ -109,8 +100,7 @@ public class Muestras extends JPanel {
         temporal[0] = Double.parseDouble(this.muestraMedia.getText());
         temporal[1] = Double.parseDouble(this.muestraDesviacion.getText());
         temporal[2] = Double.parseDouble(this.muestraN.getText());
-        return temporal;
-        
+        return temporal;        
     }
      /** MétodosetMuestraCompleta(String valM, String valD, String valN)
       * Introduce todos los parámetros completos en la muestra
@@ -124,12 +114,9 @@ public class Muestras extends JPanel {
     public void setMuestraCompleta(String valM, String valD, String valN) {
          muestraMedia.setText(valM);
          muestraDesviacion.setText(valD);
-         muestraN.setText(valN);
-        
+         muestraN.setText(valN);        
     }
     public static void contarMuestras() {
         contadorMuestras++;
     }
-    
-    
 }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.util.ArrayList;
@@ -9,7 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
-
 /**
  *
  * @author p02sotos
@@ -21,7 +16,6 @@ public class ModeloTabla  extends AbstractTableModel  {
     private ModeloTabla modeloTabla;
     private Muestras muestraBase;
     public String[] columnNames = {"Media", "Desviación", "Tamaño"};
-    
 
     public ModeloTabla() {
         super();
@@ -29,11 +23,6 @@ public class ModeloTabla  extends AbstractTableModel  {
         muestras = new ArrayList();
         muestras.add(muestraBase);
         addTableModelListener(null);
-        
-        
-        
-        
-        
     }
     public void addFila(Muestras nuevaFila) {
           muestras.add(nuevaFila);
@@ -50,21 +39,32 @@ public class ModeloTabla  extends AbstractTableModel  {
           else {
               JOptionPane.showMessageDialog(new JFrame("Error"),
                 "No hay filas para eliminar");
-          }
-            
+          }            
         }
-
+    public void limpiarTabla(){
+        while (getRowCount()!=0) {
+             removeFila();
+        }
+    }       
+    public void addMuestras (ArrayList<Muestras> val) {
+         for (int i = 0; i<val.size() ; i++ ) {
+                addFila(val.get(i));
+            }
+    }    
+    public Muestras getMuestras (int rowIndex) {
+        Muestras aux = (Muestras)muestras.get(rowIndex);        
+         return aux;
+            }
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
-    }
-    
-
+    }  
     @Override
     public int getRowCount() {
-        return muestras.size();
+        int temp;
+        temp = muestras.size();
+        return temp;
     }
-
     @Override
     public int getColumnCount() {
         return columnNames.length;
@@ -73,8 +73,6 @@ public class ModeloTabla  extends AbstractTableModel  {
     public String getColumnName(int col) {
       return columnNames[col];
     }
-    
-
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Muestras aux = (Muestras)muestras.get(rowIndex);
@@ -87,16 +85,12 @@ public class ModeloTabla  extends AbstractTableModel  {
             case 2:
                 return String.valueOf(aux.getN());
             default:
-                return null;
-        
+                return null;        
         }
-        
     }
-
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        Muestras aux = (Muestras)muestras.get(rowIndex); 
-         
+        Muestras aux = (Muestras)muestras.get(rowIndex);         
         switch(columnIndex){ 
             case 0: 
                  aux.setM(aValue.toString());  
@@ -110,21 +104,5 @@ public class ModeloTabla  extends AbstractTableModel  {
         }
         // Disparamos el Evento TableDataChanged (La tabla ha cambiado) 
         fireTableDataChanged(); 
-
     } 
-
-           
-    
-    
-        
-        
-       
-      
-        
-        
-                
-    
-    
-   
-    
 }
